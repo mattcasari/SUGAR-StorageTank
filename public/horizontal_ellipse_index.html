@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Storage Tank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="refresh" content="5">
+    <link rel="icon" href="data:,">
+    <style>
+        #tank {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 50px auto;
+        }
+
+        #cylinder {
+            width: 100%;
+            height: 100px;
+            border: 2px solid black;
+            border-bottom: none;
+            background-color: rgb(194, 211, 243);
+            position: absolute;
+            top: 0;
+        }
+
+        #cone {
+            width: 202px;
+            height: 100px;
+            background-color: rgb(194, 211, 243);
+            position: absolute;
+            bottom: 0;
+            clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+        }
+
+        #cone-border {
+            width: 202px;
+            height: 100px;
+            background-color: black;
+            position: absolute;
+            bottom: -1px;
+            clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+        }
+
+        #fill-cylinder {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: royalblue;
+        }
+
+        #semi-circle {
+            width: 200px;
+            height: 100px;
+            background-color: rgb(194, 211, 243);
+            border: 2px solid royalblue;
+            border-top: none;
+            border-radius: 0 0 50px 50px;
+            /* Creates the semi-circle */
+            position: absolute;
+            bottom: 0;
+        }
+
+        #fill-semi-circle {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 0%;
+            /* Initial height */
+            background-color: royalblue;
+            border-radius: 0 0 50px 50px;
+        }
+
+        #fill-cone {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 0%;
+            background-color: royalblue;
+        }
+
+        h1 {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sugar House RO Storage Tank</h1>
+    <h2>Liquid Depth: <span id="depth-value">TANK_DEPTH </span>(in)</h2>
+    <h2 id="volume-display">Volume: <span id="volume-value">TANK_VOLUME</span> (gallons)</h2>
+    <h2 id="level-display">Level: <span id="level-value">TANK_PERCENT</span>% Full</h2>
+
+    <div id="tank">
+        <div id="cylinder">
+            <div id="fill-cylinder"></div>
+        </div>
+        <div id="semi-circle">
+            <div id="fill-semi-circle"></div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        const fillCylinderElement = document.getElementById('fill-cylinder');
+        const fillSemiCircleElement = document.getElementById('fill-semi-circle');
+        const levelValueElement = document.getElementById('level-value');
+        let currentLevel = TANK_PERCENT; // Set your desired initial level here
+
+        function updateFill() {
+            levelValueElement.textContent = currentLevel;
+
+            if (currentLevel <= 50) {
+                // Semi-circle fill
+                fillCylinderElement.style.height = '0%';
+                fillSemiCircleElement.style.height = `${currentLevel * 2}%`;
+            } else {
+                // Cylinder fill
+                fillSemiCircleElement.style.height = '100%';
+                fillCylinderElement.style.height = `${(currentLevel - 50) * 2}%`;
+            }
+        }
+
+        updateFill(); // Initial setup
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,30 @@
+{
+    "tank": {
+        "name": "Storage Tank",
+        "lower_tank": {
+            "type":"cone",
+            "units":"in",
+            "diameter": 77.0,
+            "height": 16.0
+        },
+        "upper_tank": {
+            "type": "cylinder",
+            "units": "in",
+            "diameter": 77.0,
+            "height": 48.0
+        }
+    },
+    "sensor": {
+        "name": "Distance sensor",
+        "type": "Distance",
+        "mounted_distance": 1.0,
+        "config": {
+            "driver": "JSN-SR04T",
+            "units": "in",
+            "Pin": {
+                "trigger_pin": 1,
+                "echo_pin": 2
+            }
+        }
+    }
+}
