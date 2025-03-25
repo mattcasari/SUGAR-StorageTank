@@ -12,8 +12,7 @@
             "units": "in",
             "diameter": 77.0,
             "height": 48.0
-        }
-    },
+        },
     "sensor": {
         "name": "Distance sensor",
         "type": "Distance",
@@ -22,9 +21,10 @@
             "driver": "JSN-SR04T",
             "units": "in",
             "Pin": {
-                "trigger_pin": 1,
-                "echo_pin": 2
+                "trigger_pin": 8,
+                "echo_pin": 9
             }
         }
     }
+}
 }

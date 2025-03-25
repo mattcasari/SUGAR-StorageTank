@@ -3,8 +3,9 @@ import time
 
 
 class JSNSR04T:
-    BASE_UNITS = 'cm'
-    def __init__(self, trigger_pin: int, echo_pin: int, units: str = 'in'):
+    BASE_UNITS = "cm"
+
+    def __init__(self, trigger_pin: int, echo_pin: int, units: str = "in"):
         self._trigger_pin = Pin(trigger_pin, Pin.OUT)
         self._echo_pin = Pin(echo_pin, Pin.IN)
 
@@ -26,12 +27,12 @@ class JSNSR04T:
         # Convert the pulse to distance in cm
         distance = pulse * 0.0343 / 2
 
+        print(f"{distance=}cm")
+
         if distance > 600:
             distance = 600
 
         if distance < 0:
             distance = 0
 
-        return distance # Returns cm
-
-
+        return distance  # Returns cm

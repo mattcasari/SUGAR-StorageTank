@@ -14,5 +14,5 @@ def connect():
     print("network config:", sta_if.ifconfig())
 
 
+# webrepl.start()
 connect()
-webrepl.start()
